@@ -2,4 +2,11 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="exzi_bg">#0E111B</color>
+    <color name="text_selected">#F4F5F5</color>
+    <color name="text_unselected">#A4A8AD</color>
+    <color name="profit_green">#00B27C</color>
+    <color name="loss_red">#F65454</color>
+    <color name="unselected_button">#1B1F2D</color>
+    <color name="border_color">#424D70</color>
 </resources>
