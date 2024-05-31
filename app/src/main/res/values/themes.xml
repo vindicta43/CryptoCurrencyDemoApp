@@ -3,6 +3,13 @@
     <style name="Base.Theme.CryptoCurrencyDemoApp" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="floatingActionButtonStyle">@style/FabShapeStyle</item>
+    </style>
+
+    <style name="FabShapeStyle" parent="ShapeAppearance.Material3.SmallComponent">
+        <item name="cornerSize">100dp</item>
+<!--        <item name="android:layout_gravity">center</item>-->
+<!--        <item name="android:gravity">center</item>-->
     </style>
 
     <style name="Theme.CryptoCurrencyDemoApp" parent="Base.Theme.CryptoCurrencyDemoApp" />

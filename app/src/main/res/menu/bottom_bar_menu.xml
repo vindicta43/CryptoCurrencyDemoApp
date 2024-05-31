@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:icon="@drawable/ic_exzi"
+
+        android:title="EXZi" />
+
+    <item
+        android:icon="@drawable/ic_candlesticks"
+        android:title="Market" />
+
+    <item
+        android:checkable="false"
+        android:enabled="false"
+        android:title="Trade" />
+
+    <item
+        android:icon="@drawable/ic_copy"
+        android:title="Copy" />
+
+    <item
+        android:icon="@drawable/ic_assets"
+        android:title="Assets" />
+
+</menu>

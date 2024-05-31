@@ -2,11 +2,17 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="light_white">#F2FAFD</color>
     <color name="exzi_bg">#0E111B</color>
     <color name="text_selected">#F4F5F5</color>
     <color name="text_unselected">#A4A8AD</color>
     <color name="profit_green">#00B27C</color>
+    <color name="profit_green_transparent">#8000B27C</color>
     <color name="loss_red">#F65454</color>
+    <color name="loss_red_transparent">#80F65454</color>
     <color name="unselected_button">#1B1F2D</color>
     <color name="border_color">#424D70</color>
+    <color name="darker_gray">#9CA5C4</color>
+    <color name="regular_gray">#BFC2C5</color>
+    <color name="bottom_bar_color">#151823</color>
 </resources>

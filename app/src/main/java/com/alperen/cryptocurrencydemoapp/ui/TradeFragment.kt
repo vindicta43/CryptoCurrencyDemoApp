@@ -6,11 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.alperen.cryptocurrencydemoapp.databinding.FragmentTradeBinding
+import com.alperen.cryptocurrencydemoapp.model.orderbook.OrderType
 import com.alperen.cryptocurrencydemoapp.remote.RemoteApi
+import com.alperen.cryptocurrencydemoapp.util.OrderBookRVAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -47,36 +52,43 @@ class TradeFragment : Fragment() {
 //        }
 
         // TODO: Orderbook call test success
-//        GlobalScope.launch {
-//            val result = testInstance.getOrderBook()
-//
-//            if (result.isSuccessful) {
+        GlobalScope.launch {
+            withContext(Dispatchers.Main) {
+                val result = testInstance.getOrderBook()
+
+                if (result.isSuccessful) {
 //                result.body()?.buyOrders?.forEach {
 //                    Log.d("exzi_demo", "buy: ${it.price}, ${it.count}")
 //                }
+                    binding.rvSellOrderBook.layoutManager = LinearLayoutManager(requireContext())
+                    binding.rvSellOrderBook.adapter = OrderBookRVAdapter(result.body()?.sellOrders ?: emptyList(), OrderType.SELL)
+
+                    binding.rvBuyOrderBook.layoutManager = LinearLayoutManager(requireContext())
+                    binding.rvBuyOrderBook.adapter = OrderBookRVAdapter(result.body()?.buyOrders ?: emptyList(), OrderType.BUY)
+
+                    result.body()?.sellOrders?.forEach {
+                        Log.d("exzi_demo", "sell: ${it.price}, ${it.count}")
+                    }
+                } else {
+                    Log.d("exzi_demo", result.message())
+                }
+            }
+        }
+
+        // TODO: Ticker call test - base url different
+//        GlobalScope.launch {
+//            val result = testInstance.getTicker()
 //
-//                result.body()?.sellOrders?.forEach {
-//                    Log.d("exzi_demo", "sell: ${it.price}, ${it.count}")
+//            if (result.isSuccessful) {
+//                Log.d("exzi_demo", "islogin: ${result.body()?.is_login} ")
+//                Log.d("exzi_demo", "status: ${result.body()?.status} ")
+//
+//                result.body()?.data?.forEach {
+//                    Log.d("exzi_demo", "ticker: ${it.name} ")
 //                }
 //            } else {
 //                Log.d("exzi_demo", result.message())
 //            }
 //        }
-
-        // TODO: Ticker call test - base url different
-        GlobalScope.launch {
-            val result = testInstance.getTicker()
-
-            if (result.isSuccessful) {
-                Log.d("exzi_demo", "islogin: ${result.body()?.is_login} ")
-                Log.d("exzi_demo", "status: ${result.body()?.status} ")
-
-                result.body()?.data?.forEach {
-                    Log.d("exzi_demo", "ticker: ${it.name} ")
-                }
-            } else {
-                Log.d("exzi_demo", result.message())
-            }
-        }
     }
 }

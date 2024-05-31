@@ -124,7 +124,7 @@
 
         <RadioGroup
             android:id="@+id/toggle"
-            android:layout_width="205dp"
+            android:layout_width="@dimen/default_with"
             android:layout_height="30dp"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="13dp"
@@ -135,7 +135,7 @@
             app:layout_constraintTop_toBottomOf="@id/currencyPairRow">
 
             <RadioButton
-                android:id="@+id/btnBuy"
+                android:id="@+id/rbBuy"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginStart="1dp"
@@ -149,7 +149,7 @@
                 android:textColor="@color/white" />
 
             <RadioButton
-                android:id="@+id/btnSell"
+                android:id="@+id/rbSell"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginTop="1dp"
@@ -164,14 +164,377 @@
 
         </RadioGroup>
 
-        <LinearLayout
-            android:layout_width="120dp"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/orderTypeSelector"
+            android:layout_width="@dimen/default_with"
             android:layout_height="30dp"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="12dp"
             android:background="@drawable/item_frame"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/toggle" />
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="@id/toggle"
+            app:layout_constraintStart_toStartOf="@id/toggle"
+            app:layout_constraintTop_toBottomOf="@id/toggle">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:src="@drawable/ic_info"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="Limit"
+                android:textColor="@color/text_selected"
+                android:textSize="13sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:src="@drawable/ic_dropdown"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutPriceEntry"
+            android:layout_width="@dimen/default_with"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/item_frame"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="@id/orderTypeSelector"
+            app:layout_constraintTop_toBottomOf="@id/orderTypeSelector">
+
+            <EditText
+                android:id="@+id/etPriceEntry"
+                android:layout_width="@dimen/default_with"
+                android:layout_height="wrap_content"
+                android:layout_weight="9"
+                android:background="@android:color/transparent"
+                android:fontFamily="@font/montserrat_medium"
+                android:inputType="none"
+                android:padding="10dp"
+                android:text="42,719,1"
+                android:textColor="@color/white"
+                android:textSize="13sp">
+
+            </EditText>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical|center_horizontal"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="16dp"
+                    android:src="@drawable/ic_minus" />
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="16dp"
+                    android:src="@drawable/ic_plus" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/etEquivilentPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="=1.21 USD"
+            android:textColor="@color/darker_gray"
+            android:textSize="11sp"
+            app:layout_constraintStart_toStartOf="@id/layoutPriceEntry"
+            app:layout_constraintTop_toBottomOf="@id/layoutPriceEntry" />
+
+        <LinearLayout
+            android:id="@+id/layoutCoinEntry"
+            android:layout_width="@dimen/default_with"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="11dp"
+            android:background="@drawable/item_frame"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="@id/etEquivilentPrice"
+            app:layout_constraintTop_toBottomOf="@id/etEquivilentPrice">
+
+            <EditText
+                android:id="@+id/etCoinEntry"
+                android:layout_width="@dimen/default_with"
+                android:layout_height="wrap_content"
+                android:layout_weight="9"
+                android:background="@android:color/transparent"
+                android:fontFamily="@font/montserrat_medium"
+                android:hint="Amount"
+                android:inputType="none"
+                android:padding="10dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/text_unselected"
+                android:textSize="13sp">
+
+            </EditText>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="19dp"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="BTC"
+                android:textColor="@color/text_unselected"
+                android:textSize="13sp" />
+
+        </LinearLayout>
+
+        <SeekBar
+            android:id="@+id/percentageSeekbar"
+            android:layout_width="@dimen/default_with"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="9dp"
+            app:layout_constraintStart_toStartOf="@id/layoutCoinEntry"
+            app:layout_constraintTop_toBottomOf="@id/layoutCoinEntry">
+
+        </SeekBar>
+
+        <LinearLayout
+            android:id="@+id/layoutTotalPriceEntry"
+            android:layout_width="@dimen/default_with"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="11dp"
+            android:background="@drawable/item_frame"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="@id/percentageSeekbar"
+            app:layout_constraintTop_toBottomOf="@id/percentageSeekbar">
+
+            <EditText
+                android:id="@+id/etTotalPriceEntry"
+                android:layout_width="@dimen/default_with"
+                android:layout_height="wrap_content"
+                android:layout_weight="9"
+                android:background="@android:color/transparent"
+                android:fontFamily="@font/montserrat_medium"
+                android:hint="Total"
+                android:inputType="none"
+                android:padding="10dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/text_unselected"
+                android:textSize="13sp">
+
+            </EditText>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="19dp"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="USDT"
+                android:textColor="@color/text_unselected"
+                android:textSize="13sp" />
+
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layoutSummaryBuy"
+            android:layout_width="@dimen/default_with"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="@id/layoutTotalPriceEntry"
+            app:layout_constraintTop_toBottomOf="@id/layoutTotalPriceEntry">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="Max. Buy"
+                android:textColor="@color/darker_gray"
+                android:textSize="11sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvTotalCoinPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="0.00 BTC"
+                android:textColor="@color/text_selected"
+                android:textSize="11sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnBuy"
+            android:layout_width="@dimen/default_with"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="19dp"
+            android:background="@drawable/bg_button"
+            android:backgroundTint="@color/profit_green"
+            android:fontFamily="@font/montserrat_semibold"
+            android:text="Buy"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@id/layoutSummaryBuy"
+            app:layout_constraintTop_toBottomOf="@id/layoutSummaryBuy" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layoutOrderBookTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginHorizontal="16dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/toggle"
+            app:layout_constraintBottom_toTopOf="@id/rvSellOrderBook"
+            app:layout_constraintTop_toTopOf="@id/toggle">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="Price(USDT)"
+                android:textColor="@color/darker_gray"
+                android:textSize="11sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="Quantity(ARB)"
+                android:textColor="@color/darker_gray"
+                android:textSize="11sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvSellOrderBook"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="@id/layoutOrderBookTitle"
+            app:layout_constraintBottom_toTopOf="@id/tvOrderBookPrice"
+            app:layout_constraintStart_toStartOf="@id/layoutOrderBookTitle"
+            app:layout_constraintTop_toBottomOf="@id/layoutOrderBookTitle" />
+
+        <TextView
+            android:id="@+id/tvOrderBookPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/montserrat_semibold"
+            android:text="42.897.99"
+            android:textColor="@color/profit_green"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toTopOf="@id/tvOrderBookEquivilentPrice"
+            app:layout_constraintStart_toStartOf="@id/rvSellOrderBook"
+            app:layout_constraintTop_toBottomOf="@id/rvSellOrderBook" />
+
+        <TextView
+            android:id="@+id/tvOrderBookEquivilentPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:fontFamily="@font/montserrat_regular"
+            android:text="=$42.893.05"
+            android:textColor="@color/regular_gray"
+            android:textSize="11sp"
+            app:layout_constraintBottom_toTopOf="@id/rvBuyOrderBook"
+            app:layout_constraintStart_toStartOf="@id/tvOrderBookPrice"
+            app:layout_constraintTop_toBottomOf="@id/tvOrderBookPrice" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvBuyOrderBook"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintBottom_toTopOf="@id/layoutOrderBookDecimal"
+            app:layout_constraintEnd_toEndOf="@id/layoutOrderBookTitle"
+            app:layout_constraintStart_toStartOf="@id/tvOrderBookEquivilentPrice"
+            app:layout_constraintTop_toBottomOf="@id/tvOrderBookEquivilentPrice" />
+
+        <LinearLayout
+            android:id="@+id/layoutOrderBookDecimal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="12dp"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toBottomOf="@id/btnBuy"
+            app:layout_constraintEnd_toEndOf="@id/rvBuyOrderBook"
+            app:layout_constraintStart_toStartOf="@id/rvBuyOrderBook"
+            app:layout_constraintTop_toBottomOf="@id/rvBuyOrderBook">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/orderBookDecimalSelector"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="9"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/item_frame"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:text="0.1"
+                    android:textColor="@color/text_selected"
+                    android:textSize="13sp"
+                    android:layout_margin="10dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:src="@drawable/ic_dropdown"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:src="@drawable/ic_orderbook"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

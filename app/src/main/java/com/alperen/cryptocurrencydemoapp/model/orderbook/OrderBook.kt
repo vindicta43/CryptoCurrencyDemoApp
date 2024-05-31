@@ -7,8 +7,8 @@ import com.google.gson.annotations.SerializedName
  */
 data class OrderBook(
     @SerializedName("buy")
-    var buyOrders: List<BuyOrder>,
+    var buyOrders: List<Order>,
 
     @SerializedName("sell")
-    var sellOrders: List<SellOrder>
+    var sellOrders: List<Order>
 )
