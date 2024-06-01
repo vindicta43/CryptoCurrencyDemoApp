@@ -1,6 +1,7 @@
 package com.alperen.cryptocurrencydemoapp.di
 
 import com.alperen.cryptocurrencydemoapp.remote.RemoteApi
+import com.alperen.cryptocurrencydemoapp.remote.TickerApi
 import com.alperen.cryptocurrencydemoapp.util.Constants
 import dagger.Module
 import dagger.Provides
@@ -25,5 +26,15 @@ class AppModule {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(RemoteApi::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideTickerApi(): TickerApi {
+        return Retrofit.Builder()
+            .baseUrl(Constants.TICKER_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(TickerApi::class.java)
     }
 }

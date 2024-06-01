@@ -20,15 +20,17 @@ class OrderBookRVAdapter(private val orderBookList: List<Order>, val orderType: 
             when (orderType) {
                 OrderType.BUY -> {
                     with(binding as LayoutRvItemBuyBinding) {
-                        tvPrice.text = order.price.toString()
-                        tvQuantity.text = order.count.toString()
+                        this.order = order
+                        this.quantityBar.layoutParams.width =
+                            ((order.volumeF.toFloat() * 100).toInt())
                     }
                 }
 
                 else -> {
                     with(binding as LayoutRvItemSellBinding) {
-                        tvPrice.text = order.price.toString()
-                        tvQuantity.text = order.count.toString()
+                        this.order = order
+                        this.quantityBar.layoutParams.width =
+                            ((order.volumeF.toFloat() * 100).toInt())
                     }
                 }
             }

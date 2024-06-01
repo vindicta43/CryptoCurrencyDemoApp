@@ -5,4 +5,5 @@ package com.alperen.cryptocurrencydemoapp.util
  */
 object Constants {
     const val BASE_URL = "https://socket.exzi.com/"
+    const val TICKER_URL = "https://api.exzi.com/"
 }

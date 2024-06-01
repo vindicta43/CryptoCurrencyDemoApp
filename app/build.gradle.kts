@@ -66,8 +66,10 @@ dependencies {
     // Dependency Injection
     val diVersion = "2.51.1"
     implementation("com.google.dagger:hilt-android:$diVersion")
-//    ksp("com.google.dagger:hilt-android-compiler:$diVersion")
     kapt("com.google.dagger:hilt-android-compiler:$diVersion")
+
+    // Chart Viewer
+    implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
 }
 
 hilt {

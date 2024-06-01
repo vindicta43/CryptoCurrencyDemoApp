@@ -13,6 +13,11 @@
     <color name="unselected_button">#1B1F2D</color>
     <color name="border_color">#424D70</color>
     <color name="darker_gray">#9CA5C4</color>
+    <color name="lighter_gray">#898F94</color>
     <color name="regular_gray">#BFC2C5</color>
     <color name="bottom_bar_color">#151823</color>
+    <color name="horizontal_divider_color">#333C57</color>
+    <color name="vertival_divider_color">#6F7DAA</color>
+    <color name="selected_tab_color">#39A3D0</color>
+    <color name="cancel_button_color">#242A3D</color>
 </resources>

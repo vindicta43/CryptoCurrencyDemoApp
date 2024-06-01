@@ -9,5 +9,14 @@
         android:id="@+id/tradeFragment"
         android:name="com.alperen.cryptocurrencydemoapp.ui.TradeFragment"
         android:label="TradeFragment"
-        tools:layout="@layout/fragment_trade" />
+        tools:layout="@layout/fragment_trade">
+        <action
+            android:id="@+id/action_tradeFragment_to_chartFragment"
+            app:destination="@id/chartFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/chartFragment"
+        android:name="com.alperen.cryptocurrencydemoapp.ui.ChartFragment"
+        android:label="ChartFragment"
+        tools:layout="@layout/fragment_chart" />
 </navigation>

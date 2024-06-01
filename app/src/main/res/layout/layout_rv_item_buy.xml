@@ -5,6 +5,9 @@
 
     <data>
 
+        <variable
+            name="order"
+            type="com.alperen.cryptocurrencydemoapp.model.orderbook.Order" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,6 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat_medium"
+            android:text="@{order.rateF}"
             android:textColor="@color/profit_green"
             android:textSize="11sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -38,6 +42,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat_medium"
+            android:text="@{order.volumeF}"
             android:textColor="@color/light_white"
             android:textSize="11sp"
             app:layout_constraintBottom_toBottomOf="parent"
